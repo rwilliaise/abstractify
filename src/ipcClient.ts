@@ -3,11 +3,11 @@ import { IPC, RemoteEventsFolder } from "ipc";
 class IPCClient extends IPC<RemoteEvent> {
   eventLocation: Instance = RemoteEventsFolder;
 
-  connect(object: RemoteEvent<Callback>, callback: (...args: any[]) => any): RBXScriptConnection {
+  connect(object: RemoteEvent<Callback>, callback: (...args: unknown[]) => any): RBXScriptConnection {
     return object.OnClientEvent.Connect(callback)
   }
 
-  fire(object: RemoteEvent<Callback>, ...args: any[]): void {
+  fire(object: RemoteEvent<Callback>, ...args: unknown[]): void {
     object.FireServer(...args)
   }
 

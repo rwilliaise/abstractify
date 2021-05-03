@@ -3,7 +3,7 @@ import { IPC, RemoteEventsFolder } from "ipc";
 class IPCServer extends IPC<RemoteEvent> {
   eventLocation: Instance = RemoteEventsFolder;
 
-  connect(object: RemoteEvent<Callback>, callback: (...args: any[]) => any): RBXScriptConnection {
+  connect(object: RemoteEvent<Callback>, callback: (...args: unknown[]) => any): RBXScriptConnection {
     return object.OnServerEvent.Connect(callback)
   }
 
@@ -35,11 +35,11 @@ class IPCServer extends IPC<RemoteEvent> {
     this.fireBroad(this.getEvent(name), args)
   }
 
-  fire(object: RemoteEvent<Callback>, target: Player, ...args: any[]): void {
+  fire(object: RemoteEvent<Callback>, target: Player, ...args: unknown[]): void {
     object.FireClient(target, ...args)
   }
 
-  fireBroad(object: RemoteEvent<Callback>, ...args: any[]) {
+  fireBroad(object: RemoteEvent<Callback>, ...args: unknown[]) {
     object.FireAllClients(...args)
   }
 }
