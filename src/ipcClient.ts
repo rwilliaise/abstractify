@@ -8,7 +8,7 @@ class IPCClient extends IPC<RemoteEvent> {
   }
 
   fire(object: RemoteEvent<Callback>, ...args: any[]): void {
-    object.FireServer(args)
+    object.FireServer(...args)
   }
 
   getEvent(name: string): RemoteEvent<Callback> {

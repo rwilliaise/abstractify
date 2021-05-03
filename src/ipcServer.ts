@@ -36,11 +36,11 @@ class IPCServer extends IPC<RemoteEvent> {
   }
 
   fire(object: RemoteEvent<Callback>, target: Player, ...args: any[]): void {
-    object.FireClient(target, args)
+    object.FireClient(target, ...args)
   }
 
   fireBroad(object: RemoteEvent<Callback>, ...args: any[]) {
-    object.FireAllClients(args)
+    object.FireAllClients(...args)
   }
 }
 
