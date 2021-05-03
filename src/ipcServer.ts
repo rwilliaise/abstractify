@@ -1,4 +1,3 @@
-import { ReplicatedStorage } from "@rbxts/services";
 import { IPC, RemoteEventsFolder } from "ipc";
 
 class IPCServer extends IPC<RemoteEvent> {
@@ -13,7 +12,7 @@ class IPCServer extends IPC<RemoteEvent> {
     if (this.eventMap.has(name)) {
       event = this.eventMap.get(name) as RemoteEvent
     } else {
-      const newEvent = new Instance("RemoteEvent", ReplicatedStorage)
+      const newEvent = new Instance("RemoteEvent", RemoteEventsFolder)
       newEvent.Name = name
       this.eventMap.set(name, newEvent as unknown as RemoteEvent)
       event = newEvent as unknown as RemoteEvent
