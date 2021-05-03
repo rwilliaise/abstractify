@@ -1,7 +1,12 @@
-import { ReplicatedStorage } from "@rbxts/services"
+import { ReplicatedStorage, RunService } from "@rbxts/services"
 
-export const RemoteEventsFolder = new Instance("Folder", ReplicatedStorage)
-RemoteEventsFolder.Name = "AbstractifyEvents"
+export let RemoteEventsFolder: Instance
+if (RunService.IsServer()) {
+  RemoteEventsFolder = ReplicatedStorage.FindFirstChild('AbstractifyEvents') || new Instance("Folder", ReplicatedStorage)
+  RemoteEventsFolder.Name = "AbstractifyEvents"
+} else {
+  RemoteEventsFolder = ReplicatedStorage.WaitForChild('AbstractifyEvents')
+}
 
 /**  */
 export abstract class IPC<T extends Instance> {
