@@ -22,8 +22,8 @@ export abstract class IPC<T extends Instance> {
     return this.connect(this.getEvent(name), callback)
   }
 
-  async emit(name: string, ...args: any[]) {
-    this.fire(this.getEvent(name), args)
+  async emit(name: string, ...args: unknown[]) {
+    this.fire(this.getEvent(name), ...args)
   }
 
   /** Can yield. Gets the event or creates the event at `name` */
