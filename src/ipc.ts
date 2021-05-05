@@ -1,10 +1,10 @@
 import { ReplicatedStorage, RunService } from "@rbxts/services"
 
 export let RemoteEventsFolder: Instance
-if (RunService.IsServer()) {
+if (RunService.IsServer() && !RunService.IsStudio()) {
   RemoteEventsFolder = ReplicatedStorage.FindFirstChild('AbstractifyEvents') || new Instance("Folder", ReplicatedStorage)
   RemoteEventsFolder.Name = "AbstractifyEvents"
-} else {
+} else if (!RunService.IsStudio()) {
   RemoteEventsFolder = ReplicatedStorage.WaitForChild('AbstractifyEvents')
 }
 
