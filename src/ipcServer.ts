@@ -28,11 +28,11 @@ class IPCServer extends IPC<RemoteEvent> {
    * a specific user.
    */
   async emit(name: string, target: Player, ...args: unknown[]) {
-    this.fire(this.getEvent(name), target, args)
+    this.fire(this.getEvent(name), target, ...args)
   }
 
   broadcast(name: string, ...args: unknown[]) {
-    this.fireBroad(this.getEvent(name), args)
+    this.fireBroad(this.getEvent(name), ...args)
   }
 
   fire(object: RemoteEvent<Callback>, target: Player, ...args: unknown[]): void {
